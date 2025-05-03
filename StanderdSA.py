@@ -7,7 +7,9 @@ from typing import Tuple
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from typing import List, Dict
-
+import tkinter as tk
+from tkinter import messagebox
+from tkinter import font as tkFont
 # Load and inspect data
 df = pd.read_csv('mall_customers_preprocessed.csv')
 print(df.head(5))
@@ -326,6 +328,26 @@ def plot_stuck_probability(results: Dict):
     plt.tight_layout()
     plt.show()
 
+def start_experiment():
+    messagebox.showinfo("Experiment", "Running experiments... This may take a while!")
+
+    # Run experiments (same as your __main__ block)
+    results = run_experiments(data, configs, num_runs=10)
+
+    # Show plots
+    plot_convergence_comparison(results)
+    plot_stuck_probability(results)
+
+    # Print summary in a popup
+    summary = ""
+    for stat in results['statistics']:
+        summary += f"\n{stat['config'].cooling_type.name}:\n"
+        summary += f"  Avg Cost: {stat['avg_cost']:.2f} ± {stat['std_cost']:.2f}\n"
+        summary += f"  Stuck Probability: {stat['stuck_probability']:.2f}\n"
+        summary += f"  Best Run: {stat['min_cost']:.2f}\n"
+        summary += f"  Worst Run: {stat['max_cost']:.2f}\n"
+
+    messagebox.showinfo("Results Summary", summary)
 
 # Example usage
 if __name__ == "__main__":
@@ -337,18 +359,44 @@ if __name__ == "__main__":
         SAConfig(cooling_type=CoolingType.ADAPTIVE, cooling_rate=0.95)
     ]
 
-    # Run experiments
-    results = run_experiments(data, configs, num_runs=10)
+    # GUI window
+    root = tk.Tk()
+    root.title("Simulated Annealing Clustering")
+    root.geometry("500x300")
+    root.configure(bg="#1e1e1e")  # dark background
 
-    # Generate plots
-    plot_convergence_comparison(results)
-    plot_stuck_probability(results)
+    # Center window on screen
+    root.update_idletasks()
+    x = (root.winfo_screenwidth() - root.winfo_reqwidth()) // 2
+    y = (root.winfo_screenheight() - root.winfo_reqheight()) // 3
+    root.geometry(f"+{x}+{y}")
 
-    # Print statistical summary
-    print("\nStatistical Summary:")
-    for stat in results['statistics']:
-        print(f"\n{stat['config'].cooling_type.name}:")
-        print(f"  Avg Cost: {stat['avg_cost']:.2f} ± {stat['std_cost']:.2f}")
-        print(f"  Stuck Probability: {stat['stuck_probability']:.2f}")
-        print(f"  Best Run: {stat['min_cost']:.2f}")
-        print(f"  Worst Run: {stat['max_cost']:.2f}")
+    # Fonts
+    header_font = tkFont.Font(family="Helvetica", size=20, weight="bold")
+    button_font = tkFont.Font(family="Helvetica", size=14)
+
+    # Header label
+    header_label = tk.Label(root,
+                            text="Simulated Annealing Clustering",
+                            bg="#1e1e1e",
+                            fg="#f0f0f0",  # light text
+                            font=header_font)
+    header_label.pack(pady=40)
+
+    # Start button
+    start_button = tk.Button(root,
+                             text="Run Clustering Experiment",
+                             command=start_experiment,
+                             font=button_font,
+                             bg="#333333",  # dark button background
+                             fg="#ffffff",  # button text color
+                             activebackground="#444444",  # button hover
+                             activeforeground="#ffffff",
+                             relief="raised",
+                             bd=3,
+                             height=2,
+                             width=25)
+    start_button.pack(pady=20)
+
+    root.mainloop()
+
