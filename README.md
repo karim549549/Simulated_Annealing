@@ -38,7 +38,9 @@ T
 if Δf≤0
 otherwise
 ​
- 
+ ![deepseek_mermaid_20250430_031788](https://github.com/user-attachments/assets/e4a1e4e8-a2a9-4fed-b53f-2f9dd9f3cee0)
+
+
 ✅ Why it works:
 
 🔎 High Temperature: Broad exploration
@@ -138,9 +140,9 @@ T(t)=T
 ⚠️ Cons: Complex tuning
 
 🔄 Adaptive Cooling
+![deepseek_mermaid_20250503_6e107f](https://github.com/user-attachments/assets/ca3e3110-4b84-40da-8491-1ca641d3292c)
+
 python
-Copy
-Edit
 if acceptance_rate < 0.2:
     T *= 1.05  # Heat up
 elif acceptance_rate > 0.5:
@@ -288,6 +290,4 @@ Proceedings of the International Conference on Computational Science (ICCS 2004)
 3️⃣ 🔥 Simulated Annealing for Customer Clustering: Cooling Schedule Comparison
 🚀 First systematic comparison of 4 cooling schedules for customer segmentation using simulated annealing. (this work)
 
-
-![deepseek_mermaid_20250430_031788](https://github.com/user-attachments/assets/e4a1e4e8-a2a9-4fed-b53f-2f9dd9f3cee0)
 
