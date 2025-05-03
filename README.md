@@ -273,3 +273,17 @@ Adaptive	1100 ± 25	10%	200
 ✅ Add parallel tempering variant
 
 ✅ Explore integration with deep learning models
+
+
+📚 References
+1️⃣ Osaba, E., Díaz, F., Carballedo, R., Onieva, E., Perallos, A. (2017).
+A Discrete Artificial Bee Colony Algorithm to Solve a Rich Vehicle Routing Problem Modelling a Newspaper Distribution Problem with Recycling Policy.
+Open Journal of Applied Sciences, 7, 428-446.
+🔗 Link
+
+2️⃣ Pereira, A. I. P. N., & Fernandes, E. M. G. P. (2004).
+A Study of Simulated Annealing Variants.
+Proceedings of the International Conference on Computational Science (ICCS 2004), Kraków, Poland, 912-920.
+
+3️⃣ 🔥 Simulated Annealing for Customer Clustering: Cooling Schedule Comparison
+🚀 First systematic comparison of 4 cooling schedules for customer segmentation using simulated annealing. (this work)
