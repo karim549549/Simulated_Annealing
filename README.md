@@ -287,3 +287,7 @@ Proceedings of the International Conference on Computational Science (ICCS 2004)
 
 3️⃣ 🔥 Simulated Annealing for Customer Clustering: Cooling Schedule Comparison
 🚀 First systematic comparison of 4 cooling schedules for customer segmentation using simulated annealing. (this work)
+
+
+![deepseek_mermaid_20250430_031788](https://github.com/user-attachments/assets/e4a1e4e8-a2a9-4fed-b53f-2f9dd9f3cee0)
+
