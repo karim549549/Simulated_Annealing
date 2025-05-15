@@ -10,20 +10,16 @@ from typing import List, Dict
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import font as tkFont
-# Load and inspect data
+
 df = pd.read_csv('mall_customers_preprocessed.csv')
 print(df.head(5))
 
-
-# Configuration Enum
 class CoolingType(Enum):
     EXPONENTIAL = auto()
     LINEAR = auto()
-    VCM = auto()  # Very Fast Simulated Reannealing
+    VCM = auto()
     ADAPTIVE = auto()
 
-
-# Configuration Data Class
 @dataclass
 class SAConfig:
     num_clusters: int = 3
@@ -39,14 +35,6 @@ class SAConfig:
 
 class SimulatedAnnealingClustering:
     def __init__(self, objective, data: np.ndarray, config: SAConfig):
-        """
-        Initialize SA clustering algorithm
-
-        Args:
-            objective: Function to calculate solution cost
-            data: Input data matrix (n_samples x n_features)
-            config: SA configuration parameters
-        """
         self.objective = objective
         self.data = data
         self.config = config
